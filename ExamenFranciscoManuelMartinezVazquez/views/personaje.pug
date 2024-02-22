@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  .card(style='width: 18rem;')
+    img.card-img-top(src=personaje.image, alt=personaje.name)
+    .card-body
+      h5.card-title= personaje.name
+      p.card-text
+        if personaje.gender === 'Male'
+          | Masculino
+        else if personaje.gender === 'Female'
+          | Femenino
+        else
+          | Desconocido
+      p.card-text #{new Date(personaje.created).toISOString().split('T')[0]}
+      a(href=personaje.url, target='_blank') Descargar su ficha (JSON)
+      a(href='/') Lista completa
